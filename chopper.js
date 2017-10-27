@@ -20,7 +20,7 @@ Chopper.prototype = {
 				outputArray.push(subArray);
 			}
 		}
-		else {
+		else if (remainder > 0 && remainder < inputArray.length) {
 			quantityInRemainderSubArray = Math.round(remainder / 2);
 			quantityInEachSubArray = (inputArray.length - quantityInRemainderSubArray) / (integerN - 1);
 
@@ -43,6 +43,17 @@ Chopper.prototype = {
 			}
 
 			outputArray.push(remainderSubArray);
+		} else {
+			for (i = 0; i < inputArray.length; i++) {
+				subArray = [inputArray[i]];
+				outputArray.push(subArray);
+			}
+
+			additionalSubArrays = integerN - inputArray.length;
+
+			for (j = 0; j < additionalSubArrays; j++) {
+				outputArray.push([]);
+			}
 		}
 
 		return outputArray;

@@ -52,7 +52,7 @@ describe('Chopper', function() {
 		inputArray = [1,2,3,4,5];
 		integerN = 6;
 
-		expected = [[1], [2], [3], [4],[5], []];
+		expected = [[1], [2], [3], [4], [5], []];
 		actual = chopper.chop(inputArray, integerN);
 
 		assert.deepEqual(expected, actual);
