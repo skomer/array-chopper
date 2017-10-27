@@ -28,4 +28,14 @@ describe('Chopper', function() {
 		assert.deepEqual(expected, actual);
 	});
 
+	it('returns the expected array when integer is odd', function() {
+		inputArray = [1,2,3,4,5,6];
+		integerN = 3;
+
+		expected = [[1,2], [3,4], [5,6]];
+		actual = chopper.chop(inputArray, integerN);
+
+		assert.deepEqual(expected, actual);
+	})
+
 });
