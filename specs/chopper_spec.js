@@ -18,5 +18,14 @@ describe('Chopper', function() {
 		assert.equal(integerN, actual.length);
 	});
 
+	it('returns the expected array when integer is even', function() {
+		inputArray = [1,2,3,4,5,6];
+		integerN = 2;
+
+		expected = [[1,2,3], [4,5,6]];
+		actual = chopper.chop(inputArray, integerN);
+
+		assert.deepEqual(expected, actual);
+	});
 
 });
