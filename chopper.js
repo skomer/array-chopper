@@ -8,40 +8,22 @@ Chopper.prototype = {
 
 		if (remainder === 0) {
 			quantityInEachSubArray = inputArray.length / integerN;
+			subArrays = this.buildSubArrays(inputArray, integerN, quantityInEachSubArray);
 
-			for (i = 0; i < integerN; i++) {
-				subArray = [];
-
-				for (j = 0; j < quantityInEachSubArray; j++) {
-					desiredIndex = (quantityInEachSubArray * i) + j;
-					subArray.push(inputArray[desiredIndex]);
-				}
-
-				outputArray.push(subArray);
-			}
+			outputArray = subArrays;
 		}
 		else if (remainder > 0 && remainder < inputArray.length) {
 			quantityInRemainderSubArray = Math.round(remainder / 2);
 			quantityInEachSubArray = (inputArray.length - quantityInRemainderSubArray) / (integerN - 1);
-
-			for (i = 0; i < (integerN - 1); i++) {
-				subArray = [];
-
-				for (j = 0; j < quantityInEachSubArray; j++) {
-					desiredIndex = (quantityInEachSubArray * i) + j;
-					subArray.push(inputArray[desiredIndex]);
-				}
-
-				outputArray.push(subArray);
-			}
+			subArrays = this.buildSubArrays(inputArray, (integerN - 1), quantityInEachSubArray);
 
 			remainderSubArray = [];
-
 			for (k = quantityInRemainderSubArray; k > 0; k--) {
 				desiredIndex = inputArray.length - k;
 				remainderSubArray.push(inputArray[desiredIndex]);
 			}
 
+			outputArray = subArrays;
 			outputArray.push(remainderSubArray);
 		} else {
 			for (i = 0; i < inputArray.length; i++) {
@@ -57,9 +39,24 @@ Chopper.prototype = {
 		}
 
 		return outputArray;
+	},
+
+	buildSubArrays: function(inputArray, noOfSubArrays, lengthOfSubArrays) {
+		subArrays = [];
+
+		for (i = 0; i < noOfSubArrays; i++) {
+			subArray = [];
+
+			for (j = 0; j < quantityInEachSubArray; j++) {
+				desiredIndex = (quantityInEachSubArray * i) + j;
+				subArray.push(inputArray[desiredIndex]);
+			}
+
+			subArrays.push(subArray);
+		}
+
+		return subArrays;
 	}
-
 }
-
 
 module.exports = Chopper;
