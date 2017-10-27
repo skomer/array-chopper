@@ -38,4 +38,14 @@ describe('Chopper', function() {
 		assert.deepEqual(expected, actual);
 	})
 
+	it('returns the expected array when there is a remainder', function() {
+		inputArray = [1,2,3,4,5];
+		integerN = 3;
+
+		expected = [[1], [2], [3,4,5]];
+		actual = chopper.chop(inputArray, integerN);
+
+		assert.deepEqual(expected, actual);	
+	});
+
 });
