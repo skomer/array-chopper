@@ -15,7 +15,7 @@ describe('Chopper', function() {
 
 		actual = chopper.chop(inputArray, integerN);
 
-		assertEqual(integerN, actual.length);
+		assert.equal(integerN, actual.length);
 	});
 
 
